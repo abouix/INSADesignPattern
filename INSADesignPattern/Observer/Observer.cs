@@ -60,6 +60,8 @@ namespace INSADesignPattern.Observer
         //Trigger : declenche un evenement d'un observable
         public bool Trigger(string key)
         {
+
+            //TODO Ajouter quand un observable renvoie false, ca arrete l'execution de celles d'apres
             
             if (observables.ContainsKey(key))
             { 
