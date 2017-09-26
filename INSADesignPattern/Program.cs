@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INSADesignPattern.Obs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,16 @@ namespace INSADesignPattern
     {
         static void Main(string[] args)
         {
+
+
+            Observer.Observer observer = new Observer.Observer();
+
+            helloObservable helloObs = new helloObservable();
+            smileyObservable smileyObs = new smileyObservable();
+
+            observer.Register("hello", smileyObs);
+            observer.Register("hello", helloObs);
+
             string line;
             Console.WriteLine("");
             Console.WriteLine("     __   __     __  ________  _____");
@@ -21,10 +32,13 @@ namespace INSADesignPattern
             Console.WriteLine("Desing Patterns - Anthony Maudry amaudry@gmail.com");
             Console.WriteLine("Hello,");
             Console.WriteLine("Write something (type 'exit' to exit the program).");
+
             while ((line = Console.ReadLine()) != "exit")
             {
-                Console.WriteLine("You wrote : ");
-                Console.WriteLine(line);
+                if (!observer.Trigger(line)) { 
+                    Console.WriteLine("You wrote : ");
+                    Console.WriteLine(line);
+                }
             }
 
             Console.WriteLine("Goodbye.");
