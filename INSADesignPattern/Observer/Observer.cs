@@ -60,8 +60,6 @@ namespace INSADesignPattern.Observer
         //Trigger : declenche un evenement d'un observable
         public bool Trigger(string key)
         {
-
-            //TODO Ajouter quand un observable renvoie false, ca arrete l'execution de celles d'apres
             
             if (observables.ContainsKey(key))
             { 
@@ -69,10 +67,12 @@ namespace INSADesignPattern.Observer
 
                 foreach (var obs in listObs)
                 {
-                    obs.Execute();
+                    //Si l'exec renvoie faux, alors trigger renvoie faux et les autres obs ne sont pas exécutés
+                    if(!obs.Execute()) {
+                        return false;
+                    }                    
                 }
                 return true;
-
             } else {
                 return false;
             }
