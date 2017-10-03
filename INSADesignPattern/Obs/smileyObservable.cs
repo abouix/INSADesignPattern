@@ -12,7 +12,7 @@ namespace INSADesignPattern.Obs
         public bool Execute()
         {
             Console.WriteLine(":d");
-            return false;
+            return true;
         }
     }
 }

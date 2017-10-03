@@ -1,4 +1,6 @@
 ﻿using INSADesignPattern.Observer;
+using INSADesignPattern.InputStrat;
+using INSADesignPattern.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,12 @@ namespace INSADesignPattern.Obs
 {
     class helloObservable : IObservable
     {
+
+        public IInputStrategy InputStrat { get; set; }
+
         public bool Execute()
         {
-            Console.WriteLine("mdr prenom");
-            string name = Console.ReadLine();
-            Console.WriteLine("bjr " + name);
+            InputStrat.RunInputStrategy();
             return true;
         }
     }

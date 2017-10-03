@@ -42,12 +42,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InputStrat\IInputStrategy.cs" />
     <Compile Include="Observer\IObservable.cs" />
     <Compile Include="Observer\Observer.cs" />
     <Compile Include="Obs\helloObservable.cs" />
     <Compile Include="Obs\smileyObservable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\FirstStrategy.cs" />
+    <Compile Include="Strategies\SecondStrategy.cs" />
+    <Compile Include="Strategies\ThirdStrategy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

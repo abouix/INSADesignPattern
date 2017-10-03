@@ -67,12 +67,13 @@ namespace INSADesignPattern.Observer
 
                 foreach (var obs in listObs)
                 {
-                    //Si l'exec renvoie faux, alors trigger renvoie faux et les autres obs ne sont pas exécutés
+                    //Si l'exec renvoie faux, alors trigger retourne vrai (ou faux) et les autres obs ne sont pas exécutés
                     if(!obs.Execute()) {
-                        return false;
+                        return true;
                     }                    
                 }
                 return true;
+
             } else {
                 return false;
             }
