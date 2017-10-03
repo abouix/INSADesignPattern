@@ -15,6 +15,9 @@ namespace INSADesignPattern
         //On definit un attribut Name
         public static string Name { get; set; }
 
+        //On peut faire methode UserSaidHello
+        //On peut mettre les obs en static ici
+
         static void Main(string[] args)
         {
 

@@ -1,6 +1,5 @@
 ﻿using INSADesignPattern.Observer;
 using INSADesignPattern.InputStrat;
-using INSADesignPattern.Strategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,8 +15,8 @@ namespace INSADesignPattern.Obs
 
         public bool Execute()
         {
-            InputStrat.RunInputStrategy();
-            return true;
+            return InputStrat.RunInputStrategy();
+            
         }
     }
 }

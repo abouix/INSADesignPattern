@@ -42,10 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Composites\Menu.cs" />
+    <Compile Include="Composites\PartieRapide.cs" />
+    <Compile Include="Composites\TypePartie.cs" />
+    <Compile Include="Composite\IComposite.cs" />
     <Compile Include="InputStrat\IInputStrategy.cs" />
     <Compile Include="Observer\IObservable.cs" />
     <Compile Include="Observer\Observer.cs" />
     <Compile Include="Obs\helloObservable.cs" />
+    <Compile Include="Obs\menuObservable.cs" />
     <Compile Include="Obs\smileyObservable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

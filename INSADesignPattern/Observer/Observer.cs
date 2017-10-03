@@ -72,6 +72,8 @@ namespace INSADesignPattern.Observer
                         return true;
                     }                    
                 }
+
+
                 return true;
 
             } else {
