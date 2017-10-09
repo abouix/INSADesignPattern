@@ -94,7 +94,7 @@ namespace INSADesignPattern
 
             while ((line = Console.ReadLine()) != "exit")
             {
-
+                //If context.CurrentCOmposite.GetSons.contains(key)
                 if (composites.ContainsKey(line))
                 {
                     context.CurrentComposite = composites[line];
