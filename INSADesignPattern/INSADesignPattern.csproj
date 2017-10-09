@@ -44,13 +44,13 @@
   <ItemGroup>
     <Compile Include="Composites\Composite.cs" />
     <Compile Include="Composite\IComposite.cs" />
-    <Compile Include="Context\Context.cs" />
+    <Compile Include="Contexte\Context.cs" />
     <Compile Include="InputStrat\IInputStrategy.cs" />
     <Compile Include="Observer\IObservable.cs" />
     <Compile Include="Observer\NewObserver.cs" />
     <Compile Include="Observer\Observer.cs" />
+    <Compile Include="Obs\compObservable.cs" />
     <Compile Include="Obs\helloObservable.cs" />
-    <Compile Include="Obs\menuObservable.cs" />
     <Compile Include="Obs\smileyObservable.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

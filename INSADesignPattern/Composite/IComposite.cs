@@ -13,5 +13,9 @@ namespace INSADesignPattern.Composite
         IObservable GetObservable();
         string GetKeyWord();
 
+        void AddSon(IComposite son);
+        List<IComposite> GetSons();
+        bool DisplaySons();
+
     }
 }

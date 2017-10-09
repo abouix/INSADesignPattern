@@ -22,6 +22,7 @@ namespace INSADesignPattern.Composites
             desc = inputDesc;
             key = inputKey;
             obs = inputObs;
+            sonsList = new List<IComposite>();
         }
 
         public string GetDescription()
@@ -44,5 +45,24 @@ namespace INSADesignPattern.Composites
             sonsList.Add(son);
         }
 
+        public List<IComposite> GetSons()
+        {
+            return sonsList;
+        }
+
+        public bool DisplaySons()
+        {
+            if (sonsList.Count > 0)
+            {
+                foreach (var son in sonsList)
+                {
+                    Console.WriteLine(son.GetDescription() + " <" + son.GetKeyWord() + ">");
+                }
+            } else
+            {
+                Console.WriteLine("leaf");
+            }
+            return true;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using INSADesignPattern.Composite;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,6 @@ using System.Threading.Tasks;
 namespace INSADesignPattern.Observer
 {
 
-    //Méthode qui recupere le contexte et fait tout ce qu'il y a en dessous
-    //Faire un nouvel observer avec une méthode permettant de créer une nouvelle liste (dans le trigger), de recup le composite ainsi que tous les fils direct de ce composite et de les renregistrer apres le trigger
-    //ALEXANDRE : comment retourner dans le menu? (peut etre liste parents pour les composites)
-    //Creer observables pour chaque Composite?
     class NewObserver
     {
         private Dictionary<string, List<IObservable>> observables;
@@ -50,6 +47,7 @@ namespace INSADesignPattern.Observer
 
             if (observables.ContainsKey(key))
             {
+
                 List<IObservable> listObs = observables[key];
 
                 foreach (var obs in listObs)
@@ -60,10 +58,9 @@ namespace INSADesignPattern.Observer
                         return true;
                     }
                 }
-
-
+                //New Methode
+                ManageComposite();
                 return true;
-
             }
             else
             {
@@ -72,5 +69,29 @@ namespace INSADesignPattern.Observer
 
 
         }
+
+        public bool ManageComposite()
+        {
+            //Remise a 0 du dictionnaire d'Observables (désenregistre tout)
+            observables = new Dictionary<string, List<IObservable>>();
+
+            //Recuperation du composite courant
+            IComposite composite = Program.context.CurrentComposite;
+
+            //Fils directs
+            List<IComposite> sons = composite.GetSons();
+
+            //Enregistrement des fils
+            foreach (var son in sons)
+            {
+                Register(son.GetKeyWord(), son.GetObservable());
+            }
+
+            return true;
+
+        }
+
+
+
     }
 }
