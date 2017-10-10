@@ -50,6 +50,7 @@
     <Compile Include="Observer\NewObserver.cs" />
     <Compile Include="Observer\Observer.cs" />
     <Compile Include="Obs\alreadyObservable.cs" />
+    <Compile Include="Obs\backObservable.cs" />
     <Compile Include="Obs\compObservable.cs" />
     <Compile Include="Obs\helloObservable.cs" />
     <Compile Include="Obs\smileyObservable.cs" />

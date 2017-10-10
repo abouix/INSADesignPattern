@@ -94,7 +94,26 @@ namespace INSADesignPattern.Observer
             return true;
 
         }
+        /// <summary>
+        /// mdr
+        /// </summary>
+        /// <returns></returns>
+        public bool BackMenu()
+        {
+            //Remise a 0 du dictionnaire d'Observables (désenregistre tout)
+            observables = new Dictionary<string, List<IObservable>>();
 
+            //Fils du parent
+            List<IComposite> sons = Program.context.CurrentComposite.Parent.GetSons();
+
+            //Enregistrement des fils du parent
+            foreach (var son in sons)
+            {
+                Register(son.GetKeyWord(), son.GetObservable());
+            }
+
+            return true;
+        }
 
 
     }

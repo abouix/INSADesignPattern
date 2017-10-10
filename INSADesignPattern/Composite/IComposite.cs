@@ -17,6 +17,7 @@ namespace INSADesignPattern.Composite
         List<IComposite> GetSons();
         bool DisplaySons();
 
+        IComposite Parent { get; set; }
 
     }
 }

@@ -28,9 +28,9 @@ namespace INSADesignPattern
 
             context = new Context();
 
-            /*
+            
             Observer.Observer observer = new Observer.Observer();
-
+            /*
             helloObservable helloObs = new helloObservable();
             smileyObservable smileyObs = new smileyObservable();
 
@@ -43,6 +43,7 @@ namespace INSADesignPattern
             string line;
 
             NewObserver newObserver = new NewObserver();
+            IComposite tmp;
 
             //Creation des composites
             Composites.Composite menu = new Composites.Composite("Menu", "menu", new compObservable());
@@ -52,7 +53,9 @@ namespace INSADesignPattern
             Composites.Composite infinie = new Composites.Composite("Infinie", "endless", new compObservable());
             Composites.Composite objectif = new Composites.Composite("Objectif", "points", new compObservable());
             Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
+
             /*
+            //Fin de l'arbre
             Composites.Composite  = new Composites.Composite("Score", "score", new compObservable());
             Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
             Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
@@ -93,6 +96,8 @@ namespace INSADesignPattern
             //Register le menu
             newObserver.Register(menu.GetKeyWord(), menu.GetObservable());
 
+            observer.Register("back", new backObservable());
+
             context.CurrentComposite = menu;
 
 
@@ -112,7 +117,15 @@ namespace INSADesignPattern
             while ((line = Console.ReadLine()) != "exit")
             {
 
-                if (context.CurrentComposite.GetSons().Exists(p => p.GetKeyWord().Equals(line)) || context.CurrentComposite.GetKeyWord().Equals(line))
+                if (line.Equals("back") && !context.CurrentComposite.Equals(menu))
+                {
+
+                    observer.Trigger(line);
+                    newObserver.BackMenu();
+                    tmp = context.CurrentComposite;
+                    context.CurrentComposite = tmp.Parent;                  
+                    
+                } else if (context.CurrentComposite.GetSons().Exists(p => p.GetKeyWord().Equals(line)) || context.CurrentComposite.GetKeyWord().Equals(line))
                 {
                     context.CurrentComposite = composites[line];
                     newObserver.Trigger(line);
