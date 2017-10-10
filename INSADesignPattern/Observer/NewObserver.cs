@@ -1,4 +1,5 @@
 ﻿using INSADesignPattern.Composite;
+using INSADesignPattern.Obs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,6 +87,9 @@ namespace INSADesignPattern.Observer
             {
                 Register(son.GetKeyWord(), son.GetObservable());
             }
+
+            //Register le alreadyObs pour la prochaine fois qu'on ecrira
+            Register(composite.GetKeyWord(), new alreadyObservable());
 
             return true;
 

@@ -52,6 +52,14 @@ namespace INSADesignPattern
             Composites.Composite infinie = new Composites.Composite("Infinie", "endless", new compObservable());
             Composites.Composite objectif = new Composites.Composite("Objectif", "points", new compObservable());
             Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
+            /*
+            Composites.Composite  = new Composites.Composite("Score", "score", new compObservable());
+            Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
+            Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
+            Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
+            Composites.Composite score = new Composites.Composite("Score", "score", new compObservable());
+            */
+
 
             //Construction de l'arbre
             menu.AddSon(partieR);
@@ -61,6 +69,15 @@ namespace INSADesignPattern
             typeP.AddSon(chrono);
             typeP.AddSon(infinie);
             typeP.AddSon(objectif);
+
+            //Ajout des parents
+            partieR.Parent = menu;
+            typeP.Parent = menu;
+            score.Parent = menu;
+
+            chrono.Parent = typeP;
+            infinie.Parent = typeP;
+            objectif.Parent = typeP;
 
             //Dictionnaires de composites pour MaJ le current composite
             Dictionary<string, IComposite> composites = new Dictionary<string, IComposite>();
@@ -89,13 +106,13 @@ namespace INSADesignPattern
             Console.WriteLine("Desing Patterns - Anthony Maudry amaudry@gmail.com");
             Console.WriteLine("Hello,");
             Console.WriteLine("Write something (type 'exit' to exit the program).");
+            Console.WriteLine("Write menu to access Menu");
 
-            Console.WriteLine("Menu <menu>");
 
             while ((line = Console.ReadLine()) != "exit")
             {
-                //If context.CurrentCOmposite.GetSons.contains(key)
-                if (composites.ContainsKey(line))
+
+                if (context.CurrentComposite.GetSons().Exists(p => p.GetKeyWord().Equals(line)) || context.CurrentComposite.GetKeyWord().Equals(line))
                 {
                     context.CurrentComposite = composites[line];
                     newObserver.Trigger(line);
@@ -103,6 +120,7 @@ namespace INSADesignPattern
                     Console.WriteLine("You wrote : ");
                     Console.WriteLine(line);
                 }
+                
                 /*
                 if (line.Equals("hello")) 
                 {

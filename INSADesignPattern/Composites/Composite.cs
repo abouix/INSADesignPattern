@@ -14,6 +14,8 @@ namespace INSADesignPattern.Composites
         private string desc;
         private string key;
         private IObservable obs;
+        public IComposite Parent { get; set; }
+
 
         private List<IComposite> sonsList=null;
 
@@ -23,6 +25,7 @@ namespace INSADesignPattern.Composites
             key = inputKey;
             obs = inputObs;
             sonsList = new List<IComposite>();
+            Parent = null;
         }
 
         public string GetDescription()
@@ -54,15 +57,17 @@ namespace INSADesignPattern.Composites
         {
             if (sonsList.Count > 0)
             {
+                Console.WriteLine(desc + " <" + key + ">");
                 foreach (var son in sonsList)
                 {
-                    Console.WriteLine(son.GetDescription() + " <" + son.GetKeyWord() + ">");
+                    Console.WriteLine("---- " + son.GetDescription() + " <" + son.GetKeyWord() + ">");
                 }
             } else
             {
-                Console.WriteLine("leaf");
+                Console.WriteLine("beaf");
             }
             return true;
         }
+
     }
 }
